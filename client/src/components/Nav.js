@@ -3,6 +3,13 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 class Nav extends Component {
+    state = {
+        user: false,
+    }
+    toggleLogIn = () => {
+        this.setState({ user: !this.state.user })
+        console.log(this.state.user)
+    }
     render() {
         return (
             <Main>
@@ -11,8 +18,9 @@ class Nav extends Component {
                 </Title>
                 <ButtonBar>
                     <Link to="/search"><Button1>Search</Button1></Link>
-                    <Link to="/history"><Button1>History</Button1></Link>
-                    <Link to="/logout"><Button1>Log out</Button1></Link>
+                {/* {this.state.showForm ? <NewUser toggleForm={this.toggleForm} /> : null} */}
+                    {this.state.user ? null : <Link to="/history"><Button1>History</Button1></Link>}
+                    <Link to="/logout"><Button1 onClick={this.toggleLogIn}>Log out</Button1></Link>
                 </ButtonBar>
             </Main>
         );
