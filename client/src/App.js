@@ -8,7 +8,8 @@ import History from './components/History';
 import Login from './components/Login';
 import LogoutConfirm from './components/LogoutConfirm';
 import Search from './components/Search';
-import Info from './components/Info'
+import Info from './components/Info';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/logout" component={LogoutConfirm} />
           </Switch>
         </div>
+        <Footer />
       </Router>
     </div>
   );

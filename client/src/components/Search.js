@@ -10,6 +10,7 @@ class Search extends Component {
                         <Input1 placeholder="Search..."></Input1>
                         <Button1>Search</Button1>
                     </SearchBar>
+                    <ResultsBar>something</ResultsBar>
                 </LeftTab>
             </div>
         );
@@ -17,16 +18,27 @@ class Search extends Component {
 }
 const LeftTab = styled.div`
     width: 300px;
-    background-color: yellow;
-    height: 100vh;
+    height: 90vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
+    background-color: #C6C5B9;
+`
+const ResultsBar = styled.div`
+    width: 281px;
+    margin-left: 9px;
+    margin-bottom: 9px;
+    border-radius: 5px;
+    height: 100%;
+    margin-top: 15px;
+    background-color: #FDFDFF;
 `
 const SearchBar = styled.div`
     width: 100%;
     margin-top: 15px;
-    margin-left: 9.5px;
+    margin-left: 9px;
+    display: flex;
+    align-items: center;
 `
 const Button1 = styled.button`
 width: 70px;

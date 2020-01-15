@@ -20,7 +20,7 @@ class Nav extends Component {
 }
 const Main = styled.nav`
     width: 100%;
-    height: 80px;;
+    height: 10vh;;
     background-color: #393D3F;
     display: flex;
     flex-direction: row;
