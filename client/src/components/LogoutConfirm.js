@@ -5,6 +5,8 @@ class LogoutConfirm extends Component {
         return (
             <div>
                 Are you sure?
+                <button onClick={this.props.confirm}>Logout</button>
+                <button onClick={this.props.cancel}>Cancel</button>
             </div>
         );
     }

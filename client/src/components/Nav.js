@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import LogoutConfirm from './LogoutConfirm';
 
 class Nav extends Component {
     state = {
         user: false,
+        logoutRequest: false,
     }
-    toggleLogIn = () => {
+    login = () => {
+        this.setState({ user: true })
+    }
+    logOut = () => {
         this.setState({ user: !this.state.user })
+        this.setState({ logoutRequest: false })
         console.log(this.state.user)
+    }
+    toggleLogout = () => {
+        this.setState ({ logoutRequest: !this.state.logoutRequest })
+        console.log(this.state.logoutRequest)
     }
     render() {
         return (
             <Main>
-                <Link to="/"><Title>Database Explorer</Title></Link>
+                <Title>Database Explorer</Title>
                 <ButtonBar>
                     <Link to="/search"><Button1>Search</Button1></Link>
-                    {/* {this.state.showForm ? <NewUser toggleForm={this.toggleForm} /> : null} */}
-                    {this.state.user ? null : <Link to="/history"><Button1>History</Button1></Link>}
-                    <Link to="/logout"><Button1 onClick={this.toggleLogIn}>Log out</Button1></Link>
+                    {this.state.user ? <Link to="/history"><Button1>History</Button1></Link> : null}
+                    {this.state.user ? <Button1 onClick={this.toggleLogout}>Log Out</Button1> : <Button1 onClick={this.login}>Log In</Button1>}
+                    {this.state.logoutRequest ? <LogoutConfirm confirm={this.logOut} cancel={this.toggleLogout} /> : null}
                 </ButtonBar>
             </Main>
         );
