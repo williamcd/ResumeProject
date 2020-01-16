@@ -13,12 +13,10 @@ class Nav extends Component {
     render() {
         return (
             <Main>
-                <Title>
-                    Database Explorer
-                </Title>
+                <Link to="/"><Title>Database Explorer</Title></Link>
                 <ButtonBar>
                     <Link to="/search"><Button1>Search</Button1></Link>
-                {/* {this.state.showForm ? <NewUser toggleForm={this.toggleForm} /> : null} */}
+                    {/* {this.state.showForm ? <NewUser toggleForm={this.toggleForm} /> : null} */}
                     {this.state.user ? null : <Link to="/history"><Button1>History</Button1></Link>}
                     <Link to="/logout"><Button1 onClick={this.toggleLogIn}>Log out</Button1></Link>
                 </ButtonBar>
@@ -39,6 +37,15 @@ const Title = styled.div`
     align-self: center;
     margin-left: 25px;
     color: #FDFDFF;
+    :hover {
+    text-decoration: none;
+    }
+    :visited {
+    text-decoration: none;
+    }
+    :link {
+    text-decoration: none;
+    }
 `
 const ButtonBar = styled.div`
     display: flex;
