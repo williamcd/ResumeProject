@@ -5,13 +5,13 @@ import LogoutConfirm from './LogoutConfirm';
 
 class Nav extends Component {
     state = {
-        user: false,
+        user: true,
         logoutRequest: false,
     }
     login = () => {
         this.setState({ user: true })
     }
-    logOut = () => {
+    logout = () => {
         this.setState({ user: !this.state.user })
         this.setState({ logoutRequest: false })
         console.log(this.state.user)
@@ -25,10 +25,10 @@ class Nav extends Component {
             <Main>
                 <Title>Database Explorer</Title>
                 <ButtonBar>
-                    <Link to="/search"><Button1>Search</Button1></Link>
+                    {this.state.user ? <Link to="/search"><Button1>Search</Button1></Link> : null}
                     {this.state.user ? <Link to="/history"><Button1>History</Button1></Link> : null}
-                    {this.state.user ? <Button1 onClick={this.toggleLogout}>Log Out</Button1> : <Button1 onClick={this.login}>Log In</Button1>}
-                    {this.state.logoutRequest ? <LogoutConfirm confirm={this.logOut} cancel={this.toggleLogout} /> : null}
+                    {this.state.user ? <Button1 onClick={this.toggleLogout}>Log Out</Button1> : <Link to="/login"><Button1>Log In</Button1></Link>}
+                    {this.state.logoutRequest ? <LogoutConfirm confirm={this.logout} cancel={this.toggleLogout} /> : null}
                 </ButtonBar>
             </Main>
         );

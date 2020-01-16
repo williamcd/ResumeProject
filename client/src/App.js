@@ -20,6 +20,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Info} />
             <Route exact path="/search" component={Search} />
+            <Route exact path="/searchAuth" component={Search} />
             <Route exact path="/history" component={History} />
             <Route exact path="/login" component={Login} />
           </Switch>
