@@ -10,12 +10,62 @@ class Search extends Component {
                         <Input1 placeholder="Search..."></Input1>
                         <Button1>Search</Button1>
                     </SearchBar>
-                    <ResultsBar>something</ResultsBar>
+                    <ResultsBar>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                        <Result>DATA DATA DATA</Result>
+                    </ResultsBar>
                 </LeftTab>
             </div>
         );
     }
 }
+const Result = styled.li`
+    font-weight: 500;
+    font-size: 15px;
+    list-style-type: none;
+    width: 85%;
+    height: 50px;
+    min-height: 50px;
+    background-color: #C6C5B9;
+    margin-top: 10px;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    padding-left: 20px;
+`
 const LeftTab = styled.div`
     width: 300px;
     height: 90vh;
@@ -32,6 +82,10 @@ const ResultsBar = styled.div`
     height: 100%;
     margin-top: 15px;
     background-color: #FDFDFF;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
 `
 const SearchBar = styled.div`
     width: 100%;
