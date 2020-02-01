@@ -2,52 +2,36 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 class Search extends Component {
+    state = {
+        query: "",
+        search: false,
+        data: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"],
+        results: [],
+    }
+    toggleSearch = () => {
+        this.setState({ search: !this.state.search })
+        console.log(this.state)
+    }
+    handleChange = (event) => {
+        const { name, value } = event.target
+        this.setState({
+            [name]: value
+        })
+        console.log(this.state.query)
+    };
     render() {
         return (
             <div>
-                <LeftTab>
-                    <SearchBar>
-                        <Input1 placeholder="Search..."></Input1>
-                        <Button1>Search</Button1>
-                    </SearchBar>
-                    <ResultsBar>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                        <Result>DATA DATA DATA</Result>
-                    </ResultsBar>
-                </LeftTab>
+                <SearchBar>
+                    <Input1 placeholder="Search..." type="text" name="query" value={this.state.query} onChange={this.handleChange}></Input1>
+                    <Button1 onClick={this.toggleSearch}>Search</Button1>
+                </SearchBar>
+                <ResultsBar>
+                    <Result>{this.state.query}</Result>
+                    {this.state.data.map(entry=> {
+                        return (<Result>{entry}</Result>);
+                    })}
+                </ResultsBar>
             </div>
         );
     }
@@ -66,26 +50,19 @@ const Result = styled.li`
     display: flex;
     padding-left: 20px;
 `
-const LeftTab = styled.div`
-    width: 300px;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: #C6C5B9;
-`
 const ResultsBar = styled.div`
     width: 281px;
     margin-left: 9px;
     margin-bottom: 9px;
     border-radius: 5px;
-    height: 100%;
+    height: 69%;
     margin-top: 15px;
     background-color: #FDFDFF;
     display: flex;
     align-items: center;
     flex-direction: column;
     overflow: scroll;
+    padding-bottom: 10px;
 `
 const SearchBar = styled.div`
     width: 100%;
@@ -95,22 +72,22 @@ const SearchBar = styled.div`
     align-items: center;
 `
 const Button1 = styled.button`
-width: 70px;
-height: 40px;
-border-top-right-radius: 5px;
-border-bottom-right-radius: 5px;
-background-color: #1C7293;
-color: #393D3F;
-border: none;
-font-size: 15px;
-font-weight: bold;
-outline: none;
-&:hover {
+    width: 70px;
+    height: 40px;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #2E86AB;
     color: #FDFDFF;
-};
-&:active {
-    background-color: #065A82;
-}
+    font-size: 15px;
+    font-weight: bold;
+    outline: none;
+    &:hover {
+        color: #C6C5B9;
+    };
+    &:active {
+        background-color: #065A82;
+    }
 `
 const Input1 = styled.input`
     width: 200px;

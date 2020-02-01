@@ -72,13 +72,13 @@ const Button1 = styled.button`
     margin-right: 10px;
     border-radius: 5px;
     background-color: #1C7293;
-    color: #393D3F;
+    color: #FDFDFF;
     border: none;
     font-size: 15px;
     font-weight: bold;
     outline: none;
     &:hover {
-        color: #FDFDFF;
+        color: #C6C5B9;
     };
     &:active {
         background-color: #065A82;

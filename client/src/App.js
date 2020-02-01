@@ -7,9 +7,10 @@ import Nav from './components/Nav';
 import History from './components/History';
 import Login from './components/Login';
 import LogoutConfirm from './components/LogoutConfirm';
-import Search from './components/Search';
+// import Search from './components/Search';
 import Info from './components/Info';
 import Footer from './components/Footer';
+import LeftTab from './components/LeftTab'
 
 function App() {
   return (
@@ -17,10 +18,11 @@ function App() {
       <Router>
         <Nav/>
         <div>
+          <LeftTab />
           <Switch>
             <Route exact path="/" component={Info} />
-            <Route exact path="/search" component={Search} />
-            <Route exact path="/searchAuth" component={Search} />
+            {/* <Route exact path="/search" component={Search} /> */}
+            {/* <Route exact path="/searchAuth" component={Search} /> */}
             <Route exact path="/history" component={History} />
             <Route exact path="/login" component={Login} />
           </Switch>
