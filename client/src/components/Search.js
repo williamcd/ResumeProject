@@ -69,14 +69,12 @@ class Search extends Component {
 const AuthCheck = styled.div`
     align-self: flex-start;
     text-align: center;
-    /* margin-right: 2px; */
 `
 const LeftToRight = styled.div`
     display: flex;
     flex-direction: row;
 `
 const ResultView = styled.div`
-    /* background-color: yellow; */
     display: flex;
     height: 85vh;
     width: 70%;

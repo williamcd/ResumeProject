@@ -17,7 +17,6 @@ function App() {
       <Router>
         <Nav/>
         <div>
-          {/* <LeftTab /> */}
           <Switch>
             <Route exact path="/" component={Info} />
             <Route exact path="/search" component={Search} />
