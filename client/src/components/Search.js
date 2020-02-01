@@ -5,37 +5,92 @@ class Search extends Component {
     state = {
         query: "",
         search: false,
-        data: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"],
+        user: 1,
+        data: [
+            { title: "title1", user: 1, heading: "you can edit this, right? RIGHT?", content: "here is the content1" },
+            { title: "title2", user: 2, heading: "this is the heading2", content: "here is the content2" },
+            { title: "title3", user: 3, heading: "this is the heading3", content: "here is the content3" },
+            { title: "title4", user: 1, heading: "you can edit this, right?", content: "here is the content4" },
+            { title: "title5", user: 4, heading: "this is the heading5", content: "here is the content5" }
+        ],
         results: [],
+        currentView: {}
     }
     toggleSearch = () => {
         this.setState({ search: !this.state.search })
-        console.log(this.state)
+    }
+    toggleView = (data) => {
+        this.setState({ currentView: data })
     }
     handleChange = (event) => {
         const { name, value } = event.target
         this.setState({
             [name]: value
         })
-        console.log(this.state.query)
     };
+    checkAuth = (userID) => {
+        if (userID == this.state.user) {
+            return (
+                "✓"
+            )
+        } else {
+            return (
+                "x"
+            )
+        }
+    }
     render() {
         return (
-            <div>
-                <SearchBar>
-                    <Input1 placeholder="Search..." type="text" name="query" value={this.state.query} onChange={this.handleChange}></Input1>
-                    <Button1 onClick={this.toggleSearch}>Search</Button1>
-                </SearchBar>
-                <ResultsBar>
-                    <Result>{this.state.query}</Result>
-                    {this.state.data.map(entry=> {
-                        return (<Result>{entry}</Result>);
-                    })}
-                </ResultsBar>
-            </div>
+            <LeftToRight>
+                <Tab>
+                    <SearchBar>
+                        <Input1 placeholder="Search..." type="text" name="query" value={this.state.query} onChange={this.handleChange}></Input1>
+                        <Button1 onClick={this.toggleSearch}>Search</Button1>
+                    </SearchBar>
+                    <ResultsBar>
+                        {this.state.data.map(entry => {
+                            return (<Result onClick={() => this.toggleView(entry)} content={entry}>{entry.title}</Result>);
+                        })}
+                    </ResultsBar>
+                </Tab>
+                <ResultView>
+                    {this.state.currentView.title}
+                    <br />
+                    {this.state.currentView.heading}
+                    <br />
+                    {this.state.currentView.content}
+                    <br />
+                </ResultView>
+                <AuthCheck>{this.checkAuth(this.state.currentView.user)}</AuthCheck>
+            </LeftToRight>
         );
     }
 }
+const AuthCheck = styled.div`
+    align-self: flex-start;
+    text-align: center;
+    /* margin-right: 2px; */
+`
+const LeftToRight = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+const ResultView = styled.div`
+    /* background-color: yellow; */
+    display: flex;
+    height: 85vh;
+    width: 70%;
+    padding-left: 20px;
+    padding-top: 20px;
+`
+const Tab = styled.div`
+    min-width: 300px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #C6C5B9;
+`
 const Result = styled.li`
     font-weight: 500;
     font-size: 15px;
@@ -55,7 +110,7 @@ const ResultsBar = styled.div`
     margin-left: 9px;
     margin-bottom: 9px;
     border-radius: 5px;
-    height: 69%;
+    height: 100%;
     margin-top: 15px;
     background-color: #FDFDFF;
     display: flex;
