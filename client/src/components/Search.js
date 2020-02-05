@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import ResultView from './ResultView';
 
 class Search extends Component {
     state = {
         query: "",
         search: false,
+        initial: true,
         user: 1,
         data: [
             { title: "title1", user: 1, heading: "you can edit this, right? RIGHT?", content: "here is the content1" },
+            { title: "title2", user: 2, heading: "this is the heading2", content: "here is the content2" },
+            { title: "title3", user: 3, heading: "this is the heading3", content: "here is the content3" },
+            { title: "title4", user: 1, heading: "you can edit this, right?", content: "here is the content4" },
+            { title: "title5", user: 4, heading: "this is the heading5", content: "the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dogthe quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dogthe quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dogthe quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dogthe quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dogthe quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog" },
+            { title: "title2", user: 2, heading: "this is the heading2", content: "here is the content2" },
+            { title: "title3", user: 3, heading: "this is the heading3", content: "here is the content3" },
+            { title: "title4", user: 1, heading: "you can edit this, right?", content: "here is the content4" },
+            { title: "title5", user: 4, heading: "this is the heading5", content: "here is the content5" },
             { title: "title2", user: 2, heading: "this is the heading2", content: "here is the content2" },
             { title: "title3", user: 3, heading: "this is the heading3", content: "here is the content3" },
             { title: "title4", user: 1, heading: "you can edit this, right?", content: "here is the content4" },
@@ -21,6 +31,7 @@ class Search extends Component {
     }
     toggleView = (data) => {
         this.setState({ currentView: data })
+        this.setState({ initial: false })
     }
     handleChange = (event) => {
         const { name, value } = event.target
@@ -53,14 +64,10 @@ class Search extends Component {
                         })}
                     </ResultsBar>
                 </Tab>
-                <ResultView>
-                    {this.state.currentView.title}
-                    <br />
-                    {this.state.currentView.heading}
-                    <br />
-                    {this.state.currentView.content}
-                    <br />
-                </ResultView>
+                {this.state.initial 
+                    ? <div>Select an entry to get started!</div>
+                    : <ResultView title={this.state.currentView.title} heading={this.state.currentView.heading} content={this.state.currentView.content}/>
+                }
                 <AuthCheck>{this.checkAuth(this.state.currentView.user)}</AuthCheck>
             </LeftToRight>
         );
@@ -73,13 +80,6 @@ const AuthCheck = styled.div`
 const LeftToRight = styled.div`
     display: flex;
     flex-direction: row;
-`
-const ResultView = styled.div`
-    display: flex;
-    height: 85vh;
-    width: 70%;
-    padding-left: 20px;
-    padding-top: 20px;
 `
 const Tab = styled.div`
     min-width: 300px;
